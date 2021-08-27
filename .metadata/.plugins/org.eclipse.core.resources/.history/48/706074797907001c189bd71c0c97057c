@@ -1,0 +1,6 @@
+package io.javabrains.springbootquickstart.topic;
+
+public interface TopicRepository extends CrudRepository{
+	
+	
+}
