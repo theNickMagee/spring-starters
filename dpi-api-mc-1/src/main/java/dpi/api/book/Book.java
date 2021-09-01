@@ -1,7 +1,9 @@
 package dpi.api.book;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,11 +11,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import dpi.api.category.Category;
 import dpi.api.chapter.Chapter;
+
+import javax.persistence.JoinColumn;
+
 
 
 @Entity
@@ -39,6 +47,16 @@ public class Book {
 
 		@OneToMany(mappedBy = "book")
 	    private List<Chapter> chapters;
+		
+		@ManyToMany(targetEntity = Category.class, cascade = CascadeType.PERSIST)
+		@JoinTable(name = "category_relation",
+        joinColumns = {
+                @JoinColumn(name = "book_id", referencedColumnName = "id",
+                        nullable = false, updatable = false)},
+        inverseJoinColumns = {
+                @JoinColumn(name = "category_id", referencedColumnName = "id",
+                        nullable = false, updatable = false)})
+		private Set<Category> categories = new HashSet<>();
 	
 		
 		public Book() {
@@ -47,7 +65,7 @@ public class Book {
 		
 		public Book(int id, String title, String composer, String performer, String price, String domain, int active,
 				String author, String voice_actor, String created_by, String updated_by, Date when_created,
-				Date when_updated, List<Chapter> chapters) {
+				Date when_updated) {
 			super();
 			this.id = id;
 			this.title = title;
@@ -62,7 +80,6 @@ public class Book {
 			this.updated_by = updated_by;
 			this.when_created = when_created;
 			this.when_updated = when_updated;
-			this.chapters = chapters;
 		}
 
 		public int getId() {
@@ -73,13 +90,6 @@ public class Book {
 			this.id = id;
 		}
 
-		public List<Chapter> getChapters() {
-			return chapters;
-		}
-
-		public void setChapters(List<Chapter> chapters) {
-			this.chapters = chapters;
-		}
 		
 		public void addToChapters(Chapter chapter) {
 			this.chapters.add(chapter);

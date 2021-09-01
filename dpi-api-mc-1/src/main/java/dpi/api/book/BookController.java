@@ -15,9 +15,6 @@ import dpi.api.chapter.Chapter;
 
 
 
-
-
-
 @RestController
 public class BookController {
 	
@@ -45,17 +42,17 @@ public class BookController {
 		}
 		
 		@RequestMapping(method = RequestMethod.POST, value = "/books")
-		public void addCourse(@RequestBody Book book) {
+		public void addBook(@RequestBody Book book) {
 			bookService.addBook(book);
 		}
 		
 		@RequestMapping(method = RequestMethod.PUT, value = "/books/{id}")
-		public void updateCourse(@RequestBody Book book, @PathVariable int id) {
+		public void updateBook(@RequestBody Book book, @PathVariable int id) {
 			bookService.updateBook(book, id);
 		}
 		
 		@RequestMapping(method = RequestMethod.DELETE, value = "/books/{id}")
-		public void deleteCourse( @PathVariable int id) {
+		public void deleteBook( @PathVariable int id) {
 			bookService.deleteBook(id);
 		}
 		

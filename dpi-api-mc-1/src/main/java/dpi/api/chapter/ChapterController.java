@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import dpi.api.book.Book;
 import dpi.api.book.BookService;
 
 
@@ -33,11 +34,24 @@ public class ChapterController {
 		chapterService.adjustChaptersInBook(chapters, bookId);
 	}
 	
+	//get chapters in book
 	@RequestMapping("/books/{bookId}/chapters")
 	public List<Chapter> getChaptersInBook(@PathVariable int bookId){
 //		return bookService.getBook(bookId).getChapters();
 		System.out.println("called");
 		 return chapterService.getChaptersInBook(bookId);
+	}
+	
+	//update chapters in book - include id in chapter
+	@RequestMapping(method = RequestMethod.PUT, value = "/books/{bookId}/chapters/{chapterId}")
+	public void updateCourse(@RequestBody Chapter chapter, @PathVariable int chapterId) {
+		chapterService.updateChapter(chapter);
+	}
+	
+	//delete chapter 
+	@RequestMapping("/books/{bookId}/chapters/{chapterId}")
+	public void deleteChapter(@PathVariable int chapterId) {
+		chapterService.deleteChapter(chapterId);
 	}
 		
 	//get chapters in book
