@@ -21,7 +21,7 @@ public class Page {
 //	private int chapter_id;
 	private int page_number;
 	
-	@ManyToOne(cascade= CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "chapter_id")
 	private Chapter chapter;
 	

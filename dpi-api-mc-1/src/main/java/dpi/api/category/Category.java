@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -15,12 +17,17 @@ import dpi.api.book.Book;
 
 @Entity
 @Table(name = "category")
-
 public class Category {
 	@Id
 	private int id;
 	private String name;
-	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+	
+//	@ManyToMany(mappedBy = "categories")
+	@ManyToMany
+	@JoinTable(
+			  name = "category_relation", 
+		      inverseJoinColumns = @JoinColumn(name = "book_id"), 
+			  joinColumns = @JoinColumn(name = "category_id"))
     private Set<Book> books = new HashSet<>();
 
 	
@@ -49,6 +56,7 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public Set<Book> getBooks() {
 		return books;

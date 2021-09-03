@@ -29,7 +29,6 @@ import javax.persistence.JoinColumn;
 public class Book {
 
 		@Id
-		@GeneratedValue
 	    @Column(name="id")
 		private int id;
 		private String title;
@@ -37,7 +36,7 @@ public class Book {
 		private String performer;
 		private String price;
 		private String domain;
-		private int active;
+		private boolean active;
 		private String author;
 		private String voice_actor;
 		private String created_by;
@@ -48,22 +47,23 @@ public class Book {
 		@OneToMany(mappedBy = "book")
 	    private List<Chapter> chapters;
 		
-		@ManyToMany(targetEntity = Category.class, cascade = CascadeType.PERSIST)
-		@JoinTable(name = "category_relation",
-        joinColumns = {
-                @JoinColumn(name = "book_id", referencedColumnName = "id",
-                        nullable = false, updatable = false)},
-        inverseJoinColumns = {
-                @JoinColumn(name = "category_id", referencedColumnName = "id",
-                        nullable = false, updatable = false)})
-		private Set<Category> categories = new HashSet<>();
+		@OneToMany(mappedBy = "books")
+		private Set<Category> categories;
 	
 		
+		public Set<Category> getCategories() {
+			return categories;
+		}
+
+		public void setCategories(Set<Category> categories) {
+			this.categories = categories;
+		}
+
 		public Book() {
 			super();
 		}
 		
-		public Book(int id, String title, String composer, String performer, String price, String domain, int active,
+		public Book(int id, String title, String composer, String performer, String price, String domain, boolean active,
 				String author, String voice_actor, String created_by, String updated_by, Date when_created,
 				Date when_updated) {
 			super();
@@ -135,11 +135,11 @@ public class Book {
 			this.domain = domain;
 		}
 
-		public int getActive() {
+		public boolean getActive() {
 			return active;
 		}
 
-		public void setActive(int active) {
+		public void setActive(boolean active) {
 			this.active = active;
 		}
 

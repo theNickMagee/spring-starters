@@ -1,5 +1,6 @@
 package dpi.api.page;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +38,29 @@ public class PageService {
 	}
 	
 	public void handlePageData(List<Page> pages, int chapterId) {
+		List<Integer> newPageIds = new ArrayList<>();
+		
+		List<Page> oldPages = getPagesInChapter(chapterId);
+		
 		for (int i = 0; i < pages.size(); i++) {
 			Page page = pages.get(i);
 			if (page.getId() > 0) {
 				page.setChapter(chapterService.getChapter(chapterId));
+				newPageIds.add(page.getId());
 				updatePage(page);
 			}else {
 				addPage(page, chapterId);
 			}
 		}
+		
+		//if there is an old id not in the new ones, delete page
+		for (Page p : oldPages) {
+			if (!newPageIds.contains(p.getId())) {
+				deletePage(p.getId());
+			}
+		}
+		
+		
 	}
 	
 }

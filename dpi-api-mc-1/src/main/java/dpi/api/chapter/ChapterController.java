@@ -44,13 +44,13 @@ public class ChapterController {
 	
 	//update chapters in book - include id in chapter
 	@RequestMapping(method = RequestMethod.PUT, value = "/books/{bookId}/chapters/{chapterId}")
-	public void updateCourse(@RequestBody Chapter chapter, @PathVariable int chapterId) {
+	public void updateChapter(@RequestBody Chapter chapter, @PathVariable int chapterId) {
 		chapterService.updateChapter(chapter);
 	}
 	
 	//delete chapter 
 	@RequestMapping("/books/{bookId}/chapters/{chapterId}")
-	public void deleteChapter(@PathVariable int chapterId) {
+	public void deleteChapter(@PathVariable int bookId, @PathVariable int chapterId) {
 		chapterService.deleteChapter(chapterId);
 	}
 		

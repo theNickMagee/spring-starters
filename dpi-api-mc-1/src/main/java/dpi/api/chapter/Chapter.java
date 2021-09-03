@@ -22,8 +22,8 @@ public class Chapter {
 	private int id;
 	private String name;
 //	private int parent_chapter_id;
-	@ManyToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name = "book_id")
+	@ManyToOne
+    @JoinColumn(name="book_id", nullable=false)
 	private Book book;
 	
 	
