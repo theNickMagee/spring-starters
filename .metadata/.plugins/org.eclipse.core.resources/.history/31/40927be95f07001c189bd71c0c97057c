@@ -1,5 +1,0 @@
-package io.javabrains.springbootquickstart.hello;
-
-public class HelloController {
-
-}
