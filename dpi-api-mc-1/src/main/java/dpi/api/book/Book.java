@@ -38,7 +38,7 @@ public class Book {
 		private String composer;
 		private String performer;
 		private String price;
-		private String domain;
+		private int domain_id;
 		private boolean active;
 		private String author;
 		private String voice_actor;
@@ -70,7 +70,7 @@ public class Book {
 			super();
 		}
 		
-		public Book(int id, String title, String composer, String performer, String price, String domain, boolean active,
+		public Book(int id, String title, String composer, String performer, String price, int domain_id, boolean active,
 				String author, String voice_actor, String created_by, String recording_date, String updated_by, Date when_created, 
 				Date when_updated) {
 			super();
@@ -79,7 +79,7 @@ public class Book {
 			this.composer = composer;
 			this.performer = performer;
 			this.price = price;
-			this.domain = domain;
+			this.domain_id = domain_id;
 			this.active = active;
 			this.author = author;
 			this.voice_actor = voice_actor;
@@ -135,12 +135,12 @@ public class Book {
 			this.price = price;
 		}
 
-		public String getDomain() {
-			return domain;
+		public int getDomain() {
+			return domain_id;
 		}
 
-		public void setDomain(String domain) {
-			this.domain = domain;
+		public void setDomain(int domain) {
+			this.domain_id = domain_id;
 		}
 
 		public boolean getActive() {

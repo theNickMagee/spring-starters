@@ -10,11 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import dpi.api.book.Book;
 import dpi.api.field.Field;
 
 @Entity
+@Table(name = "domain")
 public class Domain {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,14 +24,15 @@ public class Domain {
 	private String name;
 	private String webaddress;
 
-	@ManyToMany
-	@JoinTable(
-			  name = "domain_field_relation", 
-		      inverseJoinColumns = @JoinColumn(name = "field_id"), 
-			  joinColumns = @JoinColumn(name = "domain_id"))
-    private Set<Field> fields = new HashSet<>();
+//	@ManyToMany
+//	@JoinTable(
+//			  name = "domain_field_relation", 
+//		      inverseJoinColumns = @JoinColumn(name = "field_id"), 
+//			  joinColumns = @JoinColumn(name = "domain_id"))
+//    private Set<Field> fields = new HashSet<>();
 	
-	
+	@OneToMany(mappedBy = "domains")
+	private Set<Field> fields;
 	
 	public Domain() {
 		super();

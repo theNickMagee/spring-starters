@@ -30,14 +30,17 @@ public class FieldController {
 	}
 	
 	//get fields in domain
-	
+	@RequestMapping("/domains/{id}/fields")
+	public List<Field> getFieldsInDomain(@PathVariable int id) {
+		return fieldService.getFieldsInDomain(id);
+	}
 	//set fields in domain
+	@RequestMapping(method = RequestMethod.POST, value = "/domains/{domainId}/fields")
+	public void setDomainFields(@RequestBody int[] fields, @PathVariable int domainId) {
+		fieldService.setFieldsForDomain(fields, domainId);
+	}
 	
-	
-//	@RequestMapping("/domains/{id}/fields")
-//	public List<Field> getFieldsInDomain(@PathVariable int id) {
-//		return fieldService.getFieldsInDomain(id);
-//	}
+
 	
 
 //	
