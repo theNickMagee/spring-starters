@@ -14,17 +14,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import dpi.api.category.Category;
 import dpi.api.chapter.Chapter;
+import dpi.api.domain.Domain;
 
 import javax.persistence.JoinColumn;
 
 
 
 @Entity
+@Table(name = "book")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "chapters"})
 public class Book {
 
@@ -41,6 +44,7 @@ public class Book {
 		private String voice_actor;
 		private String created_by;
 		private String updated_by;
+		private String recording_date;
 		private java.sql.Date when_created;
 		private java.sql.Date when_updated;
 
@@ -49,8 +53,11 @@ public class Book {
 		
 		@OneToMany(mappedBy = "books")
 		private Set<Category> categories;
-	
 		
+//		@OneToMany(mappedBy = "books")
+//		private Set<Domain> domains;
+//	
+//		
 		public Set<Category> getCategories() {
 			return categories;
 		}
@@ -64,7 +71,7 @@ public class Book {
 		}
 		
 		public Book(int id, String title, String composer, String performer, String price, String domain, boolean active,
-				String author, String voice_actor, String created_by, String updated_by, Date when_created,
+				String author, String voice_actor, String created_by, String recording_date, String updated_by, Date when_created, 
 				Date when_updated) {
 			super();
 			this.id = id;
@@ -76,6 +83,7 @@ public class Book {
 			this.active = active;
 			this.author = author;
 			this.voice_actor = voice_actor;
+			this.recording_date = recording_date;
 			this.created_by = created_by;
 			this.updated_by = updated_by;
 			this.when_created = when_created;
@@ -190,6 +198,14 @@ public class Book {
 
 		public void setWhen_updated(java.sql.Date when_updated) {
 			this.when_updated = when_updated;
+		}
+
+		public String getRecording_date() {
+			return recording_date;
+		}
+
+		public void setRecording_date(String recording_date) {
+			this.recording_date = recording_date;
 		}
 
 	

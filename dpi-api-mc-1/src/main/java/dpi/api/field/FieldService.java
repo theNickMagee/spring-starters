@@ -14,9 +14,9 @@ public class FieldService {
 	@Autowired
 	private FieldRepository fieldRepository;
 
-	public List<Field> getFieldsInDomain(int id) {
-		return fieldRepository.findByDomainId(id);
-	}
+//	public List<Field> getFieldsInDomain(int id) {
+//		return fieldRepository.findByDomainId(id);
+//	}
 
 	public List<Field> getAllFields() {
 		List<Field> fields = new ArrayList<>();

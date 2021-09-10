@@ -23,26 +23,34 @@ public class FieldController {
 	@Autowired
 	private DomainService domainService;
 	
-	@RequestMapping("/domains/{id}/fields")
-	public List<Field> getFieldsInDomain(@PathVariable int id) {
-		return fieldService.getFieldsInDomain(id);
-	}
-	
+	//get all fields
 	@RequestMapping("/domains/fields")
 	public List<Field> getAllFields() {
 		return fieldService.getAllFields();
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/domains/fields/{id}")
-	public void deleteField( @PathVariable int id) {
-		fieldService.deleteField(id);
-	}
+	//get fields in domain
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/domains/{id}/fields")
-	public void addDomain(@RequestBody Field field, @PathVariable int id) {
-		field.setDomain(domainService.getDomain(id));
-		fieldService.createField(field);
-	}
+	//set fields in domain
+	
+	
+//	@RequestMapping("/domains/{id}/fields")
+//	public List<Field> getFieldsInDomain(@PathVariable int id) {
+//		return fieldService.getFieldsInDomain(id);
+//	}
+	
+
+//	
+//	@RequestMapping(method = RequestMethod.DELETE, value = "/domains/fields/{id}")
+//	public void deleteField( @PathVariable int id) {
+//		fieldService.deleteField(id);
+//	}
+//	
+//	@RequestMapping(method = RequestMethod.POST, value = "/domains/{id}/fields")
+//	public void addDomain(@RequestBody Field field, @PathVariable int id) {
+//		field.setDomain(domainService.getDomain(id));
+//		fieldService.createField(field);
+//	}
 	
 	
 }

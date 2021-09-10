@@ -1,11 +1,14 @@
 package dpi.api.field;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dpi.api.domain.Domain;
@@ -16,42 +19,65 @@ public class Field {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String label;
-	@ManyToOne
-    @JoinColumn(name="domain_id", nullable=false)
-	private Domain domain;
+	private String title;
+	private String sql_label;
 	
+	@OneToMany(mappedBy = "fields")
+	private Set<Domain> domains;
+
 	
 	
 	public Field() {
 		super();
 	}
-	
-	public Field(int id, String label, Domain domain) {
+
+	public Field(int id, String title, String sql_label, Set<Domain> domains) {
 		super();
 		this.id = id;
-		this.label = label;
-		this.domain = domain;
+		this.title = title;
+		this.sql_label = sql_label;
+		this.domains = domains;
 	}
-	
-	
+
+
 	public int getId() {
 		return id;
 	}
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLabel() {
-		return label;
+
+
+
+	public String getTitle() {
+		return title;
 	}
-	public void setLabel(String label) {
-		this.label = label;
+
+
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public Domain getDomain() {
-		return domain;
+
+
+
+	public String getSql_label() {
+		return sql_label;
 	}
-	public void setDomain(Domain domain) {
-		this.domain = domain;
+
+
+
+	public void setSql_label(String sql_label) {
+		this.sql_label = sql_label;
 	}
+
+
+
+	
+	
+
 	
 }
