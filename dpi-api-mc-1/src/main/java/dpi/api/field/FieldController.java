@@ -36,7 +36,7 @@ public class FieldController {
 	}
 	//set fields in domain
 	@RequestMapping(method = RequestMethod.POST, value = "/domains/{domainId}/fields")
-	public void setDomainFields(@RequestBody int[] fields, @PathVariable int domainId) {
+	public void setDomainFields(@RequestBody int[] fields, @PathVariable Integer domainId) {
 		fieldService.setFieldsForDomain(fields, domainId);
 	}
 	
