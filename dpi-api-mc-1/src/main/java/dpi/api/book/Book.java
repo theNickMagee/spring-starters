@@ -135,11 +135,11 @@ public class Book {
 			this.price = price;
 		}
 
-		public Integer getDomainId() {
+		public Integer getDomain_id() {
 			return domain_id;
 		}
 
-		public void setDomainId(Integer domainId) {
+		public void setDomain_id(Integer domainId) {
 			this.domain_id = domainId;
 		}
 
