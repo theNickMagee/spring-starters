@@ -41,4 +41,9 @@ public class CreatorService {
 		
 	}
 
+	public List<Book> searchByNameLike(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

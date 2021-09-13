@@ -45,6 +45,13 @@ public class CreatorController {
 		return creatorService.getCreatorsInDomain(domainId);
 	}
 	
+	
+	@RequestMapping("/creator/search/{name}")
+	public List<Book> searchByTitleLike(@PathVariable String name) {
+		return creatorService.searchByNameLike(name);
+	}
+	
+	
 	//CREATE NEW CREATOR
 	@RequestMapping(method = RequestMethod.POST, value = "/creators")
 	public Creator createCreator(@RequestBody Book book) {
