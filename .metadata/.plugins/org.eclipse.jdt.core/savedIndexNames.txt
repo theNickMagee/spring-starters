@@ -65,8 +65,8 @@ INDEX VERSION 1.131+/Users/digitalpublishinginc/projects-magee/spring/.metadata/
 3661661460.index
 3442757731.index
 2493873997.index
-2729822220.index
 2791326599.index
+2729822220.index
 2352728148.index
 2275614868.index
 82465491.index
@@ -94,8 +94,8 @@ INDEX VERSION 1.131+/Users/digitalpublishinginc/projects-magee/spring/.metadata/
 2742020216.index
 4002722328.index
 3681282329.index
-3081406984.index
 2601879219.index
+3081406984.index
 3740761036.index
 2048171613.index
 3646810966.index

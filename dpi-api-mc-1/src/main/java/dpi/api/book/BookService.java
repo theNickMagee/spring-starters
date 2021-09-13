@@ -28,8 +28,10 @@ public class BookService {
 		return books;
 	}
 	
-	public void addBook(Book book) {
+	public Book addBook(Book book) {
 		bookRepository.save(book);
+		System.out.println(book);
+		return book;
 	}
 	
 	public void updateBook(Book book, int id) {

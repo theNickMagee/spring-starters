@@ -42,8 +42,8 @@ public class BookController {
 		}
 		
 		@RequestMapping(method = RequestMethod.POST, value = "/books")
-		public void addBook(@RequestBody Book book) {
-			bookService.addBook(book);
+		public Book addBook(@RequestBody Book book) {
+			return bookService.addBook(book);
 		}
 		
 		@RequestMapping(method = RequestMethod.PUT, value = "/books/{id}")
