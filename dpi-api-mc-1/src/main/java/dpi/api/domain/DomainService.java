@@ -39,4 +39,8 @@ public class DomainService {
 		
 	}
 
+	public String getDomainName(int id) {
+		return domainRepository.findById(id).get().getName();
+	}
+
 }

@@ -30,6 +30,11 @@ public class DomainController {
 			return domainService.getDomain(id);
 		}
 		
+		@RequestMapping("/domains/{id}/name")
+		public String getDomainName(@PathVariable int id) {
+			return domainService.getDomainName(id);
+		}
+		
 		@RequestMapping("/domains")
 		public List<Domain> getAllDomains() {
 			return domainService.getAllDomains();

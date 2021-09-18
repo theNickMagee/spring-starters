@@ -2,8 +2,11 @@ package dpi.api.creator;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import dpi.api.book.Book;
 
+@Service
 public class CreatorService {
 
 	public List<Creator> getAllCreators() {
