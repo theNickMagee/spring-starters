@@ -1,5 +1,6 @@
 package dpi.api.domain;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import dpi.api.book.Book;
+import dpi.api.chapter.Chapter;
+import dpi.api.creator.Creator;
 import dpi.api.field.Field;
 
 @Entity
@@ -33,6 +36,9 @@ public class Domain {
 	
 	@OneToMany(mappedBy = "domains")
 	private Set<Field> fields;
+	
+	@OneToMany(mappedBy = "domain")
+    private List<Creator> creators;
 	
 	public Domain() {
 		super();
@@ -87,6 +93,20 @@ public class Domain {
 
 	public void setFields(Set<Field> fields) {
 		this.fields = fields;
+	}
+
+
+
+
+	public List<Creator> getCreators() {
+		return creators;
+	}
+
+
+
+
+	public void setCreators(List<Creator> creators) {
+		this.creators = creators;
 	}
 	
 

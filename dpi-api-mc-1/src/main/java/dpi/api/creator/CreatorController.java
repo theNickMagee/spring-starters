@@ -54,8 +54,8 @@ public class CreatorController {
 	
 	//CREATE NEW CREATOR
 	@RequestMapping(method = RequestMethod.POST, value = "/creators")
-	public Creator createCreator(@RequestBody Book book) {
-		return creatorService.createCreator(book);
+	public Creator createCreator(@RequestBody Creator creator) {
+		return creatorService.createCreator(creator);
 	}
 	
 	//UPDATE CREATOR
